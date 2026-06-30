@@ -35,6 +35,13 @@ npm run download
 
 The downloader starts local RSSHub automatically when needed.
 
+When a local proxy is available at `127.0.0.1:7890`, `scripts/run-once.ps1` automatically routes remote HTTP/HTTPS downloads through it while keeping `127.0.0.1` and `localhost` direct for the local RSSHub service. Override the proxy with `RSSHUB_DOWNLOADER_PROXY`, for example:
+
+```powershell
+$env:RSSHUB_DOWNLOADER_PROXY = "http://127.0.0.1:7890"
+powershell -ExecutionPolicy Bypass -File .\scripts\run-once.ps1
+```
+
 ## Xiaoyuzhou Global Search
 
 Global search is enabled in `config/settings.json` under `globalSearch`. It searches Xiaoyuzhou episodes once per configured keyword, takes `limitPerKeyword` results, keeps results within `lookbackDays`, then sends them through the same keyword matching, download, record, and dedupe flow as fixed RSS feeds.
@@ -70,6 +77,8 @@ If Xiaoyuzhou returns 401 and `refreshToken` is present, the downloader refreshe
 
 The downloader log now shows auth state, each keyword search start, search result counts, plan counts, download start/finish, record append, and state write, so you can trace one run end to end.
 
+Xiaoyuzhou is the metadata source for global search results, but the actual podcast audio URL may point to the original hosting provider from the episode RSS enclosure, such as `anchor.fm`, CloudFront, or a publisher CDN. If one of those providers blocks the direct network path, the downloader can still work through the local proxy described above.
+
 ## Daily Task
 
 ```powershell
@@ -77,6 +86,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\register-daily-task.ps1
 ```
 
 Default schedule: every day at `09:00`.
+
+The scheduled task calls `scripts/run-once.ps1`, so it inherits the same local proxy detection used by manual runs.
 
 ## Add Xiaoyuzhou Feeds
 
