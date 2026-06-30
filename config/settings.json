@@ -1,0 +1,62 @@
+{
+  "rsshubBaseUrl": "http://127.0.0.1:1200",
+  "downloadDir": "downloads",
+  "dataDir": "data",
+  "logDir": "logs",
+  "rsshub": {
+    "port": 1200,
+    "host": "127.0.0.1",
+    "startupTimeoutMs": 60000
+  },
+  "feeds": [
+    {
+      "name": "AI 炼金术",
+      "id": "63e9ef4de99bdef7d39944c8"
+    },
+    {
+      "name": "AI Odyssey",
+      "id": "6533d6ae5871431eb097dea7"
+    },
+    {
+      "name": "从零开始用AI",
+      "id": "66095b7b2d9eae5d0a2a66c4"
+    }
+  ],
+  "globalSearch": {
+    "enabled": true,
+    "tokenPath": "config/xiaoyuzhou-token.json",
+    "keywords": [
+      "外贸",
+      "出海",
+      "B2B",
+      "外贸业务员"
+    ],
+    "limitPerKeyword": 30,
+    "lookbackDays": 365
+  },
+  "keywords": [
+    "AI",
+    "人工智能",
+    "大模型",
+    "LLM",
+    "ChatGPT",
+    "OpenAI",
+    "Claude",
+    "Gemini",
+    "Agent",
+    "智能体",
+    "AIGC",
+    "生成式 AI",
+    "RAG",
+    "多模态",
+    "Prompt",
+    "提示词",
+    "AI 编程",
+    "Copilot",
+    "Codex",
+    "Sora",
+    "DeepSeek"
+  ],
+  "maxItemsPerFeed": 5,
+  "downloadTimeoutMs": 180000
+}

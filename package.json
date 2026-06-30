@@ -1,0 +1,20 @@
+{
+  "name": "rsshub-radar-xiaoyuzhou-ai-downloader",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local RSSHub Radar + RSSHub + Xiaoyuzhou AI podcast downloader",
+  "scripts": {
+    "test": "node --test test/downloader.test.js test/rsshub-server.test.js test/xiaoyuzhou-search.test.js test/run-once-script.test.js",
+    "download": "node src/downloader.js --config config/settings.json --ensure-rsshub",
+    "download:dry-run": "node src/downloader.js --config config/settings.json --dry-run --ensure-rsshub",
+    "acceptance": "node test/acceptance-flow.test.js && node test/global-search-flow.test.js",
+    "xiaoyuzhou:send-code": "node src/xiaoyuzhou-auth.js send-code",
+    "xiaoyuzhou:login": "node src/xiaoyuzhou-auth.js login",
+    "rsshub:start": "node src/rsshub-server.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0",
+    "rsshub": "^1.0.0-master.dd92228"
+  }
+}
